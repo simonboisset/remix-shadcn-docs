@@ -1,0 +1,1 @@
+export const DOCS_DOMAIN = 'https://remix-shadcn-docs.vercel.app';
