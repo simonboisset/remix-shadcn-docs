@@ -37,7 +37,7 @@ export const HeroSection = () => {
               </Link>
             </Button>
           </div>
-          <CodeBlock className="bash w-full text-start overflow-x-scroll pr-16">
+          <CodeBlock className="bash max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl text-start overflow-x-scroll pr-16">
             npx create-remix@latest --template simonboisset/remix-shadcn-docs
           </CodeBlock>
         </div>
