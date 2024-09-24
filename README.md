@@ -1,5 +1,7 @@
 # Remix Shadcn Template
 
+![Remix Shadcn Docs](./app/components/landing-page/screenshot.png)
+
 A comprehensive starter kit for building modern web applications using Remix and Shadcn UI.
 
 ## Features
