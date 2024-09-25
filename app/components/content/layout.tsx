@@ -1,11 +1,13 @@
 import { Link, useParams } from "@remix-run/react";
-import { BookType } from "lucide-react";
+import { BookType, Search } from "lucide-react";
 import { LinkTree } from "~/contents/doc/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { getAppUrl } from "~/contents/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
 import { DesktopSidebar, MobileSidebar } from "../content/sidebar";
+import { Button } from "../ui/button";
 import { LanguageSelect } from "./language-select";
+import { SearchBar, SearchItem } from "./search-bar";
 import { VersionSelect } from "./version-select";
 
 function Logo() {
@@ -20,10 +22,17 @@ function Logo() {
 
 type ContentLayoutProps = {
   linksTree?: LinkTree[];
+  searchItems: SearchItem[];
   children: React.ReactNode;
 };
 
-export const Header = ({ linksTree }: { linksTree?: LinkTree[] }) => {
+export const Header = ({
+  linksTree,
+  searchItems,
+}: {
+  linksTree?: LinkTree[];
+  searchItems: SearchItem[];
+}) => {
   const t = useTranslation();
   const { DEFAULT_LANGUAGE, LATEST_VERSION } = useAppConfig();
   const { lang } = useParams();
@@ -32,6 +41,17 @@ export const Header = ({ linksTree }: { linksTree?: LinkTree[] }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-4">
         <MobileSidebar linksTree={linksTree} />
         <Logo />
+        <div className="flex sm:hidden flex-1">
+          <div className="flex-1" />
+          <SearchBar
+            items={searchItems}
+            trigger={
+              <Button variant="outline" size="icon">
+                <Search className="h-4 w-4" />
+              </Button>
+            }
+          />
+        </div>
         <div className="hidden md:flex items-center gap-8 ml-20 flex-1">
           <Link
             className="hover:text-primary font-semibold"
@@ -56,6 +76,15 @@ export const Header = ({ linksTree }: { linksTree?: LinkTree[] }) => {
             {t((l) => l.header.blog)}
           </Link>
           <div className="flex-1" />
+          <SearchBar
+            items={searchItems}
+            trigger={
+              <Button variant="outline" className="text-muted-foreground">
+                <Search className="h-4 w-4 mr-2" />
+                {t((l) => l.search.placeholder)}
+              </Button>
+            }
+          />
           <VersionSelect />
           <LanguageSelect />
         </div>
@@ -64,10 +93,14 @@ export const Header = ({ linksTree }: { linksTree?: LinkTree[] }) => {
   );
 };
 
-export function ContentLayout({ linksTree, children }: ContentLayoutProps) {
+export function ContentLayout({
+  linksTree,
+  searchItems,
+  children,
+}: ContentLayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header linksTree={linksTree} />
+      <Header linksTree={linksTree} searchItems={searchItems} />
       <div className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 py-8">
           {!!linksTree && <DesktopSidebar linksTree={linksTree} />}

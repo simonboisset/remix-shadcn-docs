@@ -54,4 +54,9 @@ export const fr: Translations = {
     docs: "Docs",
     blog: "Blog",
   },
+  search: {
+    placeholder: "Rechercher dans la documentation...",
+    submit: "Rechercher",
+    noResults: "Aucun résultat trouvé",
+  },
 };

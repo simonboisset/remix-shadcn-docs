@@ -1,15 +1,32 @@
-import { Link } from "@remix-run/react";
+import { LoaderFunctionArgs } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
 import { Header } from "~/components/content/layout";
 import { FeaturesSection } from "~/components/landing-page/features-section";
 import { HeroSection } from "~/components/landing-page/hero-section";
 import { ScreenshotSection } from "~/components/landing-page/screenshot-section";
+import {
+  DEFAULT_LANGUAGE,
+  getDocs,
+  LATEST_VERSION,
+} from "~/contents/doc/doc.server";
+import { getSearchItems } from "~/contents/doc/search-items.server";
 import { useTranslation } from "~/contents/i18n/translator";
+
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  const docs = getDocs({
+    version: LATEST_VERSION,
+    language: params.lang || DEFAULT_LANGUAGE,
+  });
+  const searchItems = getSearchItems(docs);
+  return { searchItems };
+};
 
 export default function Index() {
   const t = useTranslation();
+  const { searchItems } = useLoaderData<typeof loader>();
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header searchItems={searchItems} />
       <div className="flex flex-col">
         <main className="flex-1">
           <HeroSection />
