@@ -23,8 +23,7 @@ export const loader = async () => {
   return new Response(content, {
     status: 200,
     headers: {
-      "Content-Type": "application/xml",
-      "xml-version": "1.0",
+      "Content-Type": "text/plain",
       encoding: "UTF-8",
     },
   });

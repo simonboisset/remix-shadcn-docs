@@ -46,7 +46,7 @@ export const Header = ({
           <SearchBar
             items={searchItems}
             trigger={
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" aria-label="Search">
                 <Search className="h-4 w-4" />
               </Button>
             }
