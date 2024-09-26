@@ -1,4 +1,4 @@
-import { useNavigate } from "@remix-run/react";
+import { useNavigate, useParams } from "@remix-run/react";
 import Fuse, { FuseResult, FuseResultMatch } from "fuse.js";
 import { Search, X } from "lucide-react";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export function SearchBar({
   const [isOpen, setIsOpen] = useState(false);
   const { DEFAULT_LANGUAGE, LATEST_VERSION } = useAppConfig();
   const [searchQuery, setSearchQuery] = useState<string>("");
-
+  const params = useParams();
   const onSearch = (query: string) => {
     setSearchQuery(query);
     const fuse = new Fuse(items, {
@@ -50,6 +50,8 @@ export function SearchBar({
       getAppUrl({
         type: "docs",
         slug: item.item.slug,
+        lang: params.lang,
+        version: params.version,
         DEFAULT_LANGUAGE,
         LATEST_VERSION,
       })
