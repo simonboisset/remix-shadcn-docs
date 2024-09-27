@@ -6,8 +6,8 @@ import {
   DEFAULT_LANGUAGE,
   getDocs,
   LATEST_VERSION,
-} from "~/contents/doc/doc.server";
-import { getSearchItems } from "~/contents/doc/search-items.server";
+} from "~/contents/docs/doc.server";
+import { getSearchItems } from "~/contents/docs/search-items.server";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { posts } = requireBlogPost(params);

@@ -6,7 +6,7 @@ import {
   getSlug,
   getTitle,
   requireDoc,
-} from "~/contents/doc/doc.server";
+} from "~/contents/docs/doc.server";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { docs, lang, version } = requireDoc(params);

@@ -8,8 +8,8 @@ import {
   DEFAULT_LANGUAGE,
   getDocs,
   LATEST_VERSION,
-} from "~/contents/doc/doc.server";
-import { getSearchItems } from "~/contents/doc/search-items.server";
+} from "~/contents/docs/doc.server";
+import { getSearchItems } from "~/contents/docs/search-items.server";
 import { useTranslation } from "~/contents/i18n/translator";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {

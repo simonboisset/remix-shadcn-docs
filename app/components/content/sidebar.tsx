@@ -1,7 +1,9 @@
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Link, useNavigate, useParams } from "@remix-run/react";
 import { Link2, MenuIcon } from "lucide-react";
-import { LinkTree } from "~/contents/doc/doc.server";
+import { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
+import { GITHUB_URL } from "~/contents/navigation/domain";
 import { getAppUrl } from "~/contents/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
 import {
@@ -61,7 +63,14 @@ export function MobileSidebar({ linksTree }: { linksTree?: LinkTree[] }) {
           <SheetTitle className="text-start">Remix Shadcn Docs</SheetTitle>
         </SheetHeader>
         <div className="py-4 flex flex-col gap-2">
-          <LanguageSelect expand />
+          <div className="flex flex-row gap-2">
+            <LanguageSelect expand />
+            <Button variant="outline" size="icon" aria-label="GitHub" asChild>
+              <Link to={GITHUB_URL}>
+                <GitHubLogoIcon className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
           <VersionSelect expand />
           <Button
             variant="outline"

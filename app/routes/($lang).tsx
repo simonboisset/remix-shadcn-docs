@@ -10,7 +10,7 @@ import {
   languageSchema,
   LATEST_VERSION,
   versions,
-} from "~/contents/doc/doc.server";
+} from "~/contents/docs/doc.server";
 import { dictionary, TranslationProvider } from "~/contents/i18n/translator";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {

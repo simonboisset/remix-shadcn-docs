@@ -37,7 +37,7 @@ export function SearchBar({
       includeMatches: true,
       threshold: 0.3,
       minMatchCharLength: 3,
-      ignoreLocation: true,
+      distance: 100000,
     });
 
     const searchResults = fuse.search(query);

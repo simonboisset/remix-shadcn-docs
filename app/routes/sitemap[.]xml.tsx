@@ -5,7 +5,7 @@ import {
   getSlug,
   getTitle,
   LATEST_VERSION,
-} from "~/contents/doc/doc.server";
+} from "~/contents/docs/doc.server";
 import { DOCS_DOMAIN } from "~/contents/navigation/domain";
 
 export const loader = async () => {
