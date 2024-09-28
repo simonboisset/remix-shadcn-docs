@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "@remix-run/react";
 import Fuse, { FuseResult, FuseResultMatch } from "fuse.js";
 import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "~/contents/i18n/translator";
 import { getAppUrl } from "~/contents/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
@@ -15,6 +15,14 @@ export type SearchItem = {
   content: string;
   slug: string;
 };
+
+const fuseOptions = {
+  keys: ["content", "title"],
+  includeMatches: true,
+  threshold: 0.3,
+  minMatchCharLength: 3,
+  distance: 100000,
+}
 
 export function SearchBar({
   items,
@@ -30,17 +38,14 @@ export function SearchBar({
   const { DEFAULT_LANGUAGE, LATEST_VERSION } = useAppConfig();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const params = useParams();
+  const fuseIndex = useMemo(() => Fuse.createIndex(fuseOptions.keys, items), [items]);
+  const fuse = useMemo(() => new Fuse(items, fuseOptions, fuseIndex), [fuseIndex, items]);
+
   const onSearch = (query: string) => {
     setSearchQuery(query);
-    const fuse = new Fuse(items, {
-      keys: ["content", "title"],
-      includeMatches: true,
-      threshold: 0.3,
-      minMatchCharLength: 3,
-      distance: 100000,
-    });
 
     const searchResults = fuse.search(query);
+
     setResults(searchResults);
   };
 
