@@ -1,7 +1,7 @@
 import { redirect } from "@remix-run/node";
 import { Params } from "@remix-run/react";
 import { z } from "zod";
-import { getAppUrl } from "../navigation/get-url";
+import { getAppUrl } from "../../navigation/get-url";
 import { v0_0_1 } from "./v0.0.1";
 import { v1_0_0 } from "./v1.0.0";
 export const DEFAULT_LANGUAGE = "en";

@@ -1,4 +1,4 @@
-import { DOCS_DOMAIN } from "~/contents/navigation/domain";
+import { DOCS_DOMAIN } from "~/navigation/domain";
 
 export const loader = async () => {
   const content = `

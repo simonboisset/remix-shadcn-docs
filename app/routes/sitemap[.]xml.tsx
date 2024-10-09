@@ -6,7 +6,7 @@ import {
   getTitle,
   LATEST_VERSION,
 } from "~/contents/docs/doc.server";
-import { DOCS_DOMAIN } from "~/contents/navigation/domain";
+import { DOCS_DOMAIN } from "~/navigation/domain";
 
 export const loader = async () => {
   const allDocs = doc;

@@ -2,7 +2,7 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/react";
 import { requireBlogPost } from "~/contents/blog/blog.server";
 import { DEFAULT_LANGUAGE, LATEST_VERSION } from "~/contents/docs/doc.server";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { getAppUrl } from "~/navigation/get-url";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { posts, lang } = requireBlogPost(params);

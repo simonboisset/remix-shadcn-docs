@@ -5,6 +5,7 @@ import {
 } from "@remix-run/node";
 import { Outlet, useMatches } from "@remix-run/react";
 import { createTranslator } from "typed-locale";
+import { WEBSITE_TITLE } from "~/contents/const";
 import {
   DEFAULT_LANGUAGE,
   languageSchema,
@@ -29,7 +30,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) return [];
   const t = createTranslator(data.dictionary);
   return [
-    { title: "Remix Shadcn Docs" },
+    { title: WEBSITE_TITLE },
     { name: "description", content: t ? t((l) => l.subtitle) : "" },
   ];
 };

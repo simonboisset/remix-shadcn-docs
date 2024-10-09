@@ -6,7 +6,7 @@ import {
   LATEST_VERSION,
   requireDoc,
 } from "~/contents/docs/doc.server";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { getAppUrl } from "~/navigation/get-url";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { docs, lang, version } = requireDoc(params);

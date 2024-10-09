@@ -1,10 +1,11 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Link, useParams } from "@remix-run/react";
 import { BookType, Search } from "lucide-react";
+import { WEBSITE_TITLE } from "~/contents/const";
 import { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
-import { GITHUB_URL } from "~/contents/navigation/domain";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { GITHUB_URL } from "~/navigation/domain";
+import { getAppUrl } from "~/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
 import { DesktopSidebar, MobileSidebar } from "../content/sidebar";
 import { Button } from "../ui/button";
@@ -17,7 +18,7 @@ function Logo() {
   return (
     <Link to={lang ? `/${lang}` : "/"} className="flex items-center space-x-2">
       <BookType className="h-6 w-6" />
-      <span className="font-bold text-xl text-primary">Remix Shadcn Docs</span>
+      <span className="font-bold text-xl text-primary">{WEBSITE_TITLE}</span>
     </Link>
   );
 }

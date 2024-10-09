@@ -1,6 +1,6 @@
 import { Link, useParams } from "@remix-run/react";
 import { useTranslation } from "~/contents/i18n/translator";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { getAppUrl } from "~/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
 import { CodeBlock } from "../content/code-block";
 import { Button } from "../ui/button";

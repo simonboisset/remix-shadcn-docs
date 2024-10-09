@@ -7,7 +7,7 @@ import {
   LATEST_VERSION,
   requireDoc,
 } from "~/contents/docs/doc.server";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { getAppUrl } from "~/navigation/get-url";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [

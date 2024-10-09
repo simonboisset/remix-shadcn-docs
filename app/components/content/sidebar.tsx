@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams } from "@remix-run/react";
 import { Link2, MenuIcon } from "lucide-react";
 import { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
-import { GITHUB_URL } from "~/contents/navigation/domain";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { GITHUB_URL } from "~/navigation/domain";
+import { getAppUrl } from "~/navigation/get-url";
 import { useAppConfig } from "~/routes/($lang)";
 import {
   Accordion,

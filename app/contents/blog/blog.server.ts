@@ -1,5 +1,6 @@
 import { redirect } from "@remix-run/node";
 import { Params } from "@remix-run/react";
+import { getAppUrl } from "../../navigation/get-url";
 import {
   DEFAULT_LANGUAGE,
   getTitle,
@@ -8,7 +9,6 @@ import {
   LATEST_VERSION,
   LinkTree,
 } from "../docs/doc.server";
-import { getAppUrl } from "../navigation/get-url";
 import { en } from "./en";
 import { fr } from "./fr";
 

@@ -3,7 +3,7 @@ import { redirect, useLoaderData } from "@remix-run/react";
 import { ArticleContent, processedContent } from "~/components/content/article";
 import { getBlogContent, requireBlogPost } from "~/contents/blog/blog.server";
 import { DEFAULT_LANGUAGE, LATEST_VERSION } from "~/contents/docs/doc.server";
-import { getAppUrl } from "~/contents/navigation/get-url";
+import { getAppUrl } from "~/navigation/get-url";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
