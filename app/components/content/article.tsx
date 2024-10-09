@@ -8,7 +8,7 @@ import html from "remark-html";
 import { useTranslation } from "~/contents/i18n/translator";
 import { cn } from "~/lib/utils";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)";
+import { useAppConfig } from "~/routes/($lang)+/_layout";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { CodeBlock } from "./code-block";
 import {

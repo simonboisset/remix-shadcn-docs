@@ -1,7 +1,7 @@
 import { Link, useParams } from "@remix-run/react";
 import { useTranslation } from "~/contents/i18n/translator";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)";
+import { useAppConfig } from "~/routes/($lang)+/_layout";
 import { Button } from "../ui/button";
 import screenshot from "./screenshot.png";
 export const ScreenshotSection = () => {

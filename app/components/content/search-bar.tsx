@@ -4,7 +4,7 @@ import { Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useTranslation } from "~/contents/i18n/translator";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)";
+import { useAppConfig } from "~/routes/($lang)+/_layout";
 import { Input } from "../ui/input";
 import { ResponsiveDrawer } from "../ui/responsive-drawer";
 import { ScrollArea } from "../ui/scroll-area";

@@ -5,7 +5,7 @@ import { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)";
+import { useAppConfig } from "~/routes/($lang)+/_layout";
 import {
   Accordion,
   AccordionContent,
