@@ -1,36 +1,33 @@
-const getAppUrlWithLanguage = ({lang, DEFAULT_LANGUAGE}: {lang?: string; DEFAULT_LANGUAGE: string}) => {
+type GetRootUrlPrams = { lang?: string; DEFAULT_LANGUAGE: string; url: string };
+const getRootUrl = ({ lang, DEFAULT_LANGUAGE, url }: GetRootUrlPrams) => {
   if (lang === DEFAULT_LANGUAGE || !lang) {
-    return ``;
+    return url || "/";
   }
-  return `/${lang}`;
+  return `/${lang}${url}`;
 };
 
-const getAppUrlWithVersion = ({
-  type,
+type GetDocUrlParams = {
+  lang?: string;
+  version?: string;
+  slug?: string;
+  DEFAULT_LANGUAGE: string;
+  LATEST_VERSION: string;
+};
+
+const getDocUrl = ({
   lang,
   version,
   DEFAULT_LANGUAGE,
   LATEST_VERSION,
   slug,
-}: {
-  type?: 'docs' | 'blog';
-  lang?: string;
-  version?: string;
-  DEFAULT_LANGUAGE: string;
-  LATEST_VERSION: string;
-  slug?: string;
-}) => {
-  const urlWithLanguage = getAppUrlWithLanguage({lang, DEFAULT_LANGUAGE});
-  if (!type) {
-    return urlWithLanguage || '/';
-  }
-  if (type === 'blog') {
-    return slug ? `${urlWithLanguage}/blog/${slug}` : `${urlWithLanguage}/blog`;
-  }
+}: GetDocUrlParams) => {
+  const urlWithLanguage = getRootUrl({ lang, DEFAULT_LANGUAGE, url: "/docs" });
   if (version === LATEST_VERSION || !version) {
-    return `${urlWithLanguage}/docs`;
+    return slug ? `${urlWithLanguage}/${slug}` : urlWithLanguage;
   }
-  return `${urlWithLanguage}/docs/v/${version}`;
+  return slug
+    ? `${urlWithLanguage}/v/${version}/${slug}`
+    : `${urlWithLanguage}/v/${version}`;
 };
 
 export const getAppUrl = ({
@@ -41,21 +38,20 @@ export const getAppUrl = ({
   DEFAULT_LANGUAGE,
   LATEST_VERSION,
 }: {
-  type?: 'docs' | 'blog';
+  type?: "docs" | "blog";
   lang?: string;
   version?: string;
   slug?: string;
   DEFAULT_LANGUAGE: string;
   LATEST_VERSION: string;
 }) => {
-  const urlWithVersion = getAppUrlWithVersion({type, lang, version, DEFAULT_LANGUAGE, LATEST_VERSION, slug});
-  if (!type || type === 'blog') {
-    return urlWithVersion;
+  if (type === "docs") {
+    return getDocUrl({ lang, version, DEFAULT_LANGUAGE, LATEST_VERSION, slug });
   }
-
-  if (slug) {
-    return `${urlWithVersion}/${slug}`;
+  if (type === "blog") {
+    return slug
+      ? `${getRootUrl({ lang, DEFAULT_LANGUAGE, url: "/blog" })}/${slug}`
+      : `${getRootUrl({ lang, DEFAULT_LANGUAGE, url: "/blog" })}`;
   }
-
-  return urlWithVersion;
+  return getRootUrl({ lang, DEFAULT_LANGUAGE, url: slug ? `/${slug}` : "" });
 };
