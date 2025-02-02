@@ -1,4 +1,4 @@
-import { InferTranslation, plural } from "typed-locale";
+import { type InferTranslation, plural } from "typed-locale";
 
 export const en = {
   landingPage: {

@@ -1,16 +1,17 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link, useParams } from "@remix-run/react";
-import { BookType, Search } from "lucide-react";
+import { Link, useParams } from "react-router";
 import { WEBSITE_TITLE } from "~/contents/const";
-import { LinkTree } from "~/contents/docs/doc.server";
+import type { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import { DesktopSidebar, MobileSidebar } from "../content/sidebar";
+import { BookType } from "../icons/book-type";
+import { Github } from "../icons/github";
+import { Search } from "../icons/search";
 import { Button } from "../ui/button";
 import { LanguageSelect } from "./language-select";
-import { SearchBar, SearchItem } from "./search-bar";
+import { SearchBar, type SearchItem } from "./search-bar";
 import { VersionSelect } from "./version-select";
 
 function Logo() {
@@ -92,7 +93,7 @@ export const Header = ({
           <LanguageSelect />
           <Button variant="outline" size="icon" aria-label="GitHub" asChild>
             <Link to={GITHUB_URL}>
-              <GitHubLogoIcon className="h-4 w-4" />
+              <Github className="h-4 w-4" />
             </Link>
           </Button>
         </div>

@@ -1,5 +1,4 @@
-import { redirect } from "@remix-run/node";
-import { Params } from "@remix-run/react";
+import { redirect, type Params } from "react-router";
 import { z } from "zod";
 import { getAppUrl } from "../../navigation/get-url";
 import { v0_0_1 } from "./v0.0.1";
@@ -214,11 +213,13 @@ export const requireDoc = (params: Params) => {
     version === LATEST_VERSION;
 
   if (mustRedirect) {
+    console.warn("Must redirect to", redirectUrl);
     throw redirect(redirectUrl);
   }
 
   const docs = getDocs({ version: validVersion, language: validLanguage });
   if (!docs) {
+    console.warn("No docs found for version", validVersion);
     throw redirect(
       getAppUrl({
         type: "docs",

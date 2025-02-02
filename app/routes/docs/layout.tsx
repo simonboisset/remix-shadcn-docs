@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData } from "react-router";
 import { ContentLayout } from "~/components/content/layout";
 import {
   getDocSummaries,
@@ -7,8 +6,9 @@ import {
   getTitle,
   requireDoc,
 } from "~/contents/docs/doc.server";
+import type { Route } from "./+types/layout";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const { docs, lang, version } = requireDoc(params);
   const { tree } = getDocSummaries({ docs, lang, version });
   const searchItems = !docs

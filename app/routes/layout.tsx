@@ -1,9 +1,4 @@
-import {
-  LoaderFunctionArgs,
-  MetaFunction,
-  SerializeFrom,
-} from "@remix-run/node";
-import { Outlet, useMatches } from "@remix-run/react";
+import { Outlet, useMatches } from "react-router";
 import { createTranslator } from "typed-locale";
 import { WEBSITE_TITLE } from "~/contents/const";
 import {
@@ -13,8 +8,9 @@ import {
   versions,
 } from "~/contents/docs/doc.server";
 import { dictionary, TranslationProvider } from "~/contents/i18n/translator";
+import type { Route } from "./+types/layout";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const { lang } = params;
   const validLang = languageSchema.safeParse(lang).data ?? DEFAULT_LANGUAGE;
 
@@ -26,7 +22,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   } as const;
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   if (!data) return [];
   const t = createTranslator(data.dictionary);
   return [
@@ -46,13 +42,13 @@ export default function Index() {
 export const useAppConfig = () => {
   const matches = useMatches();
 
-  const root = matches.find((match) => match.id === "routes/($lang)")?.data as
-    | SerializeFrom<Awaited<ReturnType<typeof loader>>>
+  const root = matches.find((match) => match.id === "routes/layout")?.data as
+    | Awaited<ReturnType<typeof loader>>
     | undefined;
   const { DEFAULT_LANGUAGE, LATEST_VERSION, versions } = root ?? {
     DEFAULT_LANGUAGE: "en",
-    LATEST_VERSION: "0.4.2",
-    versions: ["0.4.2"],
+    LATEST_VERSION: "1.0.0",
+    versions: ["1.0.0"],
   };
   return { DEFAULT_LANGUAGE, LATEST_VERSION, versions };
 };

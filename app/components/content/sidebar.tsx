@@ -1,11 +1,12 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link, useNavigate, useParams } from "@remix-run/react";
-import { Link2, MenuIcon } from "lucide-react";
-import { LinkTree } from "~/contents/docs/doc.server";
+import { Link, useNavigate, useParams } from "react-router";
+import type { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
+import { Github } from "../icons/github";
+import { Link2 } from "../icons/link-2";
+import { Menu } from "../icons/menu";
 import {
   Accordion,
   AccordionContent,
@@ -48,7 +49,7 @@ export function MobileSidebar({ linksTree }: { linksTree?: LinkTree[] }) {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="md:hidden">
-          <MenuIcon className="h-6 w-6" />
+          <Menu className="h-6 w-6" />
           <span className="sr-only">
             {t((l) => l.sidebar.toggleDocumentationMenu)}
           </span>
@@ -67,7 +68,7 @@ export function MobileSidebar({ linksTree }: { linksTree?: LinkTree[] }) {
             <LanguageSelect expand />
             <Button variant="outline" size="icon" aria-label="GitHub" asChild>
               <Link to={GITHUB_URL}>
-                <GitHubLogoIcon className="h-4 w-4" />
+                <Github className="h-4 w-4" />
               </Link>
             </Button>
           </div>

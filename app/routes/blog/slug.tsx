@@ -1,18 +1,18 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { redirect, useLoaderData } from "@remix-run/react";
+import { redirect, useLoaderData } from "react-router";
 import { ArticleContent, processedContent } from "~/components/content/article";
 import { getBlogContent, requireBlogPost } from "~/contents/blog/blog.server";
 import { DEFAULT_LANGUAGE, LATEST_VERSION } from "~/contents/docs/doc.server";
 import { getAppUrl } from "~/navigation/get-url";
+import type { Route } from "./+types/slug";
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   return [
     { title: data?.title },
     { name: "description", content: data?.description },
   ];
 };
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const { posts, lang } = requireBlogPost(params);
 
   const slug = params.slug;

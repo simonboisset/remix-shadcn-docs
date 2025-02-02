@@ -1,9 +1,9 @@
-import { useParams } from "@remix-run/react";
 import { createContext, useContext } from "react";
-import { createTranslatorFromDictionary, Translator } from "typed-locale";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
-import { Language } from "../docs/doc.server";
-import { en, Translations } from "./en";
+import { useParams } from "react-router";
+import { createTranslatorFromDictionary, type Translator } from "typed-locale";
+import { useAppConfig } from "~/routes/layout";
+import type { Language } from "../docs/doc.server";
+import { en, type Translations } from "./en";
 import { fr } from "./fr";
 
 export const dictionary = { en, fr };
