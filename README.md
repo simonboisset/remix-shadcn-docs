@@ -1,5 +1,7 @@
 # Remix Shadcn Template
 
+> **Important Update**: This template now supports React Router v7 and Tailwind CSS v4! While maintaining backward compatibility with Remix, you can now leverage the latest features from both React Router and Tailwind.
+
 ![Remix Shadcn Docs](./app/components/landing-page/screenshot.png)
 
 A comprehensive starter kit for building modern web applications using Remix and Shadcn UI.
