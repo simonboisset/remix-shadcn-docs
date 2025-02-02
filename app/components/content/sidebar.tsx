@@ -1,5 +1,4 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link2, MenuIcon } from "lucide-react";
+import { Github, Link2, MenuIcon } from "lucide-react";
 import { Link, useNavigate, useParams } from "react-router";
 import type { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
@@ -67,7 +66,7 @@ export function MobileSidebar({ linksTree }: { linksTree?: LinkTree[] }) {
             <LanguageSelect expand />
             <Button variant="outline" size="icon" aria-label="GitHub" asChild>
               <Link to={GITHUB_URL}>
-                <GitHubLogoIcon className="h-4 w-4" />
+                <Github className="h-4 w-4" />
               </Link>
             </Button>
           </div>

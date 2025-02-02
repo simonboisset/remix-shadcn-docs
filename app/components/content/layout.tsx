@@ -1,5 +1,4 @@
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { BookType, Search } from "lucide-react";
+import { BookType, Github, Search } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { WEBSITE_TITLE } from "~/contents/const";
 import type { LinkTree } from "~/contents/docs/doc.server";
@@ -92,7 +91,7 @@ export const Header = ({
           <LanguageSelect />
           <Button variant="outline" size="icon" aria-label="GitHub" asChild>
             <Link to={GITHUB_URL}>
-              <GitHubLogoIcon className="h-4 w-4" />
+              <Github className="h-4 w-4" />
             </Link>
           </Button>
         </div>
