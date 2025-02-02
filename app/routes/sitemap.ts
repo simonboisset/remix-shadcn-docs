@@ -116,8 +116,6 @@ export const loader = async () => {
     </urlset>
   `;
 
-  console.log(content);
-
   return new Response(content, {
     status: 200,
     headers: {

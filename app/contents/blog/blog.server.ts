@@ -1,13 +1,12 @@
-import { redirect } from "@remix-run/node";
-import { Params } from "@remix-run/react";
+import { redirect, type Params } from "react-router";
 import { getAppUrl } from "../../navigation/get-url";
 import {
   DEFAULT_LANGUAGE,
   getTitle,
-  Language,
   languageSchema,
   LATEST_VERSION,
-  LinkTree,
+  type Language,
+  type LinkTree,
 } from "../docs/doc.server";
 import { en } from "./en";
 import { fr } from "./fr";
@@ -49,11 +48,13 @@ export const requireBlogPost = (params: Params) => {
   const mustRedirect = lang === DEFAULT_LANGUAGE || !successLang;
 
   if (mustRedirect) {
+    console.warn("Language not valid", redirectUrl);
     throw redirect(redirectUrl);
   }
 
   const posts = getBlogPosts(validLanguage);
   if (!posts) {
+    console.warn("No posts found for language", validLanguage);
     throw redirect(
       getAppUrl({
         type: "blog",

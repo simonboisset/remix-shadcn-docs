@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "@remix-run/react";
-import Fuse, { FuseResult, FuseResultMatch } from "fuse.js";
+import Fuse, { type FuseResult, type FuseResultMatch } from "fuse.js";
 import { Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { useTranslation } from "~/contents/i18n/translator";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import { Input } from "../ui/input";
 import { ResponsiveDrawer } from "../ui/responsive-drawer";
 import { ScrollArea } from "../ui/scroll-area";

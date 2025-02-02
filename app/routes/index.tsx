@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "react-router";
 import { Header } from "~/components/content/layout";
 import { FeaturesSection } from "~/components/landing-page/features-section";
 import { HeroSection } from "~/components/landing-page/hero-section";
@@ -11,8 +10,9 @@ import {
 } from "~/contents/docs/doc.server";
 import { getSearchItems } from "~/contents/docs/search-items.server";
 import { useTranslation } from "~/contents/i18n/translator";
+import type { Route } from "./+types/index";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const docs = getDocs({
     version: LATEST_VERSION,
     language: params.lang || DEFAULT_LANGUAGE,

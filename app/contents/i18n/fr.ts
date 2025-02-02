@@ -1,5 +1,5 @@
 import { plural } from "typed-locale";
-import { Translations } from "./en";
+import type { Translations } from "./en";
 
 export const fr: Translations = {
   landingPage: {

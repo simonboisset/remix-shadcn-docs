@@ -1,11 +1,11 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link, useNavigate, useParams } from "@remix-run/react";
 import { Link2, MenuIcon } from "lucide-react";
-import { LinkTree } from "~/contents/docs/doc.server";
+import { Link, useNavigate, useParams } from "react-router";
+import type { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import {
   Accordion,
   AccordionContent,

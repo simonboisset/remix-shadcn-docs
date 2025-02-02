@@ -1,8 +1,8 @@
-import { useLocation, useNavigate, useParams } from "@remix-run/react";
-import { Language } from "~/contents/docs/doc.server";
+import { useLocation, useNavigate, useParams } from "react-router";
+import type { Language } from "~/contents/docs/doc.server";
 import { cn } from "~/lib/utils";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import {
   Select,
   SelectContent,

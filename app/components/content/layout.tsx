@@ -1,16 +1,16 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link, useParams } from "@remix-run/react";
 import { BookType, Search } from "lucide-react";
+import { Link, useParams } from "react-router";
 import { WEBSITE_TITLE } from "~/contents/const";
-import { LinkTree } from "~/contents/docs/doc.server";
+import type { LinkTree } from "~/contents/docs/doc.server";
 import { useTranslation } from "~/contents/i18n/translator";
 import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import { DesktopSidebar, MobileSidebar } from "../content/sidebar";
 import { Button } from "../ui/button";
 import { LanguageSelect } from "./language-select";
-import { SearchBar, SearchItem } from "./search-bar";
+import { SearchBar, type SearchItem } from "./search-bar";
 import { VersionSelect } from "./version-select";
 
 function Logo() {

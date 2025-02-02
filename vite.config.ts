@@ -1,5 +1,5 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { flatRoutes } from "remix-flat-routes";
+import { reactRouter } from "@react-router/dev/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -7,17 +7,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [
-    remix({
-      routes: async (defineRoutes) => {
-        return flatRoutes("routes", defineRoutes);
-      },
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-      },
-    }),
-    tsconfigPaths(),
-  ],
+  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 });

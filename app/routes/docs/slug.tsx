@@ -1,5 +1,4 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { redirect, useLoaderData } from "@remix-run/react";
+import { redirect, useLoaderData } from "react-router";
 import { ArticleContent, processedContent } from "~/components/content/article";
 import {
   DEFAULT_LANGUAGE,
@@ -8,15 +7,16 @@ import {
   requireDoc,
 } from "~/contents/docs/doc.server";
 import { getAppUrl } from "~/navigation/get-url";
+import type { Route } from "./+types/slug";
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: Route.MetaFunction = ({ data }) => {
   return [
     { title: data?.title },
     { name: "description", content: data?.description },
   ];
 };
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const { docs, lang, version } = requireDoc(params);
 
   const summaries = getDocSummaries({ docs, lang, version });
@@ -24,6 +24,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const slug = params.slug;
   const summary = summaries.flat.find((doc) => doc.slug === slug);
   if (!summary) {
+    console.warn("No summary found for slug", slug);
     throw redirect(
       getAppUrl({
         type: "docs",

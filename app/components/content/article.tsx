@@ -1,14 +1,13 @@
-import { SerializeFrom } from "@remix-run/node";
-import { Link, useParams } from "@remix-run/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
+import { Link, useParams } from "react-router";
 import { remark } from "remark";
 import html from "remark-html";
 import { useTranslation } from "~/contents/i18n/translator";
 import { cn } from "~/lib/utils";
 import { getAppUrl } from "~/navigation/get-url";
-import { useAppConfig } from "~/routes/($lang)+/_layout";
+import { useAppConfig } from "~/routes/layout";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { CodeBlock } from "./code-block";
 import {
@@ -49,9 +48,7 @@ export const processedContent = async (content: string) => {
   return { content: processedContent, toc: tocItems, title, description };
 };
 
-type ArticleContentProps = SerializeFrom<
-  Awaited<ReturnType<typeof processedContent>>
-> & {
+type ArticleContentProps = Awaited<ReturnType<typeof processedContent>> & {
   type: "docs" | "blog";
   nextArticle?: {
     slug: string;
