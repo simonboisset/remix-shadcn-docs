@@ -1,13 +1,10 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
 import * as React from "react";
-
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  SortAsc,
-} from "lucide-react";
 import { cn } from "~/lib/utils";
+import { Check } from "../icons/check";
+import { ChevronDown } from "../icons/chevron-down";
+import { ChevronUp } from "../icons/chevron-up";
+import { SortAsc } from "../icons/sort-asc";
 
 const Select = SelectPrimitive.Root;
 
@@ -47,7 +44,7 @@ const SelectScrollUpButton = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronUpIcon />
+    <ChevronUp />
   </SelectPrimitive.ScrollUpButton>
 ));
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
@@ -64,7 +61,7 @@ const SelectScrollDownButton = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronDownIcon />
+    <ChevronDown />
   </SelectPrimitive.ScrollDownButton>
 ));
 SelectScrollDownButton.displayName =
@@ -128,7 +125,7 @@ const SelectItem = React.forwardRef<
   >
     <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <CheckIcon className="h-4 w-4" />
+        <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

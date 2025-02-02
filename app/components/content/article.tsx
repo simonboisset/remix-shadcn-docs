@@ -1,4 +1,3 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Link, useParams } from "react-router";
@@ -8,6 +7,8 @@ import { useTranslation } from "~/contents/i18n/translator";
 import { cn } from "~/lib/utils";
 import { getAppUrl } from "~/navigation/get-url";
 import { useAppConfig } from "~/routes/layout";
+import { ChevronLeft } from "../icons/chevron-left";
+import { ChevronRight } from "../icons/chevron-right";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { CodeBlock } from "./code-block";
 import {

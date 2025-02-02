@@ -1,4 +1,3 @@
-import { BookType, Github, Search } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { WEBSITE_TITLE } from "~/contents/const";
 import type { LinkTree } from "~/contents/docs/doc.server";
@@ -7,6 +6,9 @@ import { GITHUB_URL } from "~/navigation/domain";
 import { getAppUrl } from "~/navigation/get-url";
 import { useAppConfig } from "~/routes/layout";
 import { DesktopSidebar, MobileSidebar } from "../content/sidebar";
+import { BookType } from "../icons/book-type";
+import { Github } from "../icons/github";
+import { Search } from "../icons/search";
 import { Button } from "../ui/button";
 import { LanguageSelect } from "./language-select";
 import { SearchBar, type SearchItem } from "./search-bar";

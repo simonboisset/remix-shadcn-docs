@@ -1,6 +1,7 @@
-import { CheckIcon, CopyIcon } from "lucide-react";
 import { Highlight, themes } from "prism-react-renderer";
 import { useState } from "react";
+import { Check } from "../icons/check";
+import { Copy } from "../icons/copy";
 import { Button } from "../ui/button";
 
 export function CodeBlock({
@@ -47,9 +48,9 @@ export function CodeBlock({
         aria-label={isCopied ? "Copied" : "Copy"}
       >
         {isCopied ? (
-          <CheckIcon className="h-4 w-4" />
+          <Check className="h-4 w-4" />
         ) : (
-          <CopyIcon className="h-4 w-4" />
+          <Copy className="h-4 w-4" />
         )}
       </Button>
     </div>

@@ -1,6 +1,6 @@
-import { Library } from "lucide-react";
 import type { MouseEvent } from "react";
 import { Link } from "react-router";
+import { Library } from "../icons/library";
 import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
 import {

@@ -1,5 +1,7 @@
-import { PaintBucket, Rocket, Trophy } from "lucide-react";
 import { useTranslation } from "~/contents/i18n/translator";
+import { PaintBucket } from "../icons/paint-bucket";
+import { Rocket } from "../icons/rocket";
+import { Trophy } from "../icons/trophy";
 
 export const FeaturesSection = () => {
   const t = useTranslation();
